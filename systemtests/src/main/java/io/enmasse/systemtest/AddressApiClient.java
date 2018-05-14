@@ -284,9 +284,7 @@ public class AddressApiClient {
 
     public void appendAddresses(AddressSpace addressSpace, Destination... destinations) throws Exception {
         JsonObject response = getAddresses(addressSpace, Optional.empty());
-        Set<Destination> current = TestUtils.convertToListAddress(response, Destination.class, entries -> true).stream()
-                .filter(d -> d.getAddressSpace().equals(addressSpace.getName()))
-                .collect(Collectors.toSet());
+        Set<Destination> current = new HashSet<>(TestUtils.convertToListAddress(response, Destination.class, entries -> true));
 
         Set<Destination> desired = Sets.newHashSet(destinations);
 
