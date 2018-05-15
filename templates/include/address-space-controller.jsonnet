@@ -28,7 +28,7 @@ local images = import "images.jsonnet";
           "serviceAccount": "enmasse-admin",
           "containers": [
             {
-              "image": images.address_controller,
+              "image": images.address_space_controller,
               "name": "address-space-controller",
               "env": [
                 {
