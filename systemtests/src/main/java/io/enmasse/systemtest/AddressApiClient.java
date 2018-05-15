@@ -304,10 +304,13 @@ public class AddressApiClient {
         Set<Destination> toCreate = Sets.difference(desired, current);
         Set<Destination> toDelete = Sets.difference(current, desired);
 
+        log.info("Creating {}", toCreate);
+
         for (Destination destination : toCreate) {
             createAddress(addressSpace, destination);
         }
 
+        log.info("Deleting {}", toDelete);
         for (Destination destination : toDelete) {
             deleteAddress(addressSpace.getName(), destination);
         }
